@@ -120,10 +120,7 @@ const About = () => {
           "https://avatars.githubusercontent.com/u/212736108?v=4",
       };
 
-      const response = await axios.post(
-        BASE_URL + "/api/send-email",
-        dataToSend
-      );
+      const response = await axios.post(BASE_URL + "/send-email", dataToSend);
 
       if (response.data.success) {
         setSubmitStatus("success");
