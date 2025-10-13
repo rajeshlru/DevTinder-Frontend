@@ -1,8 +1,8 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 import axios from "axios";
-import { motion } from "framer-motion";
 import { BASE_URL } from "../utils/constants";
 import { useSelector } from "react-redux";
 
@@ -241,7 +241,7 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full blur-md opacity-70"></div>
               <div className="relative w-60 h-60 rounded-full overflow-hidden border-2 border-white/20">
                 <img
-                  src="https://media.licdn.com/dms/image/v2/D4E03AQHaz37F7XaT0Q/profile-displayphoto-shrink_400_400/B4EZXAwiS2HUAg-/0/1742695705540?e=1759968000&v=beta&t=NSYU-KEp5gDVJCEgGoixUUSCTAo23tQrALdx5aOpIY4"
+                  src="https://media.licdn.com/dms/image/v2/D4E03AQHaz37F7XaT0Q/profile-displayphoto-shrink_800_800/B4EZXAwiS2HUAc-/0/1742695705662?e=1762992000&v=beta&t=z-ZKXgdShx4W7vOaoRY-lfnxvnVSNTrghUPrE3WxdDQ"
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
