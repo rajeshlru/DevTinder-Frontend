@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addRequest, removeRequest } from "../utils/requestSlice";
 import { useEffect, useState } from "react";
 import { addConnection, addSingleConnection } from "../utils/connectionSlice";
+import { Link } from "react-router-dom";
 
 const Requests = () => {
   const dispatch = useDispatch();
