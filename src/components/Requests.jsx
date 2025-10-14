@@ -79,58 +79,121 @@ const Requests = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black  flex flex-col items-center justify-center p-6">
-        <div className="text-center max-w-md mx-auto">
-          <div className="relative inline-block mb-6">
-            <div className="w-20 h-20 border-4 border-indigo-200 border-t-indigo-500 rounded-full animate-spin"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <svg
-                className="w-10 h-10 text-indigo-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                ></path>
-              </svg>
-            </div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(50)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                opacity: Math.random() * 0.7 + 0.3,
+              }}
+            />
+          ))}
+
+          <div className="absolute -top-40 -right-32 w-96 h-96 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute -bottom-40 -left-32 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+
+          <div className="absolute top-1/4 left-1/4 w-6 h-6 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full shadow-lg animate-orbit-slow">
+            <div className="absolute inset-0.5 bg-orange-300/30 rounded-full"></div>
           </div>
-          <h2 className="text-3xl font-bold text-green-800 mb-3 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text ">
-            Loading Connections
-          </h2>
-          <p className="text-gray-200 text-lg">
-            We're gathering your connection requests...
-          </p>
+          <div className="absolute bottom-1/3 right-1/3 w-4 h-4 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full shadow-lg animate-orbit-fast">
+            <div className="absolute inset-0.5 bg-blue-300/30 rounded-full"></div>
+          </div>
         </div>
 
-        <div className="mt-12 w-full max-w-md">
-          {[1, 2, 3].map((item) => (
-            <div
-              key={item}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-md mb-5 animate-pulse border border-white/30"
-            >
-              <div className="flex items-center space-x-4">
-                <div className="rounded-full bg-gradient-to-r from-gray-200 to-gray-300 h-14 w-14"></div>
-                <div className="flex-1">
-                  <div className="h-5 bg-gradient-to-r from-gray-200 to-gray-300 rounded w-3/4 mb-3"></div>
-                  <div className="h-3 bg-gradient-to-r from-gray-200 to-gray-300 rounded w-1/2"></div>
+        <div className="text-center max-w-2xl mx-auto relative z-10">
+          <div className="mb-12 relative">
+            <div className="relative w-32 h-32 mx-auto">
+              <div className="absolute inset-0 border-4 border-transparent rounded-full animate-spin border-t-purple-500 border-r-blue-500 border-b-pink-500 border-l-cyan-500 shadow-2xl"></div>
+
+              <div className="absolute inset-6 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full animate-pulse shadow-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-white/20 rounded-full animate-ping"></div>
+              </div>
+
+              {[0, 1, 2].map((i) => (
+                <div
+                  key={i}
+                  className="absolute w-4 h-4 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full shadow-lg animate-electron-orbit"
+                  style={{
+                    animationDelay: `${i * 0.3}s`,
+                  }}
+                >
+                  <div className="w-1 h-1 bg-white rounded-full absolute top-1 left-1"></div>
                 </div>
-                <div className="flex space-x-2">
-                  <div className="h-9 bg-gradient-to-r from-gray-200 to-gray-300 rounded-xl w-16"></div>
-                  <div className="h-9 bg-gradient-to-r from-gray-200 to-gray-300 rounded-xl w-16"></div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mb-12 space-y-4">
+            <h2 className="text-5xl font-black bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient-x mb-6">
+              Quantum Loading
+            </h2>
+            <p className="text-xl text-white/80 font-light tracking-wide">
+              Initializing connection matrix
+            </p>
+            <div className="flex justify-center items-center space-x-2">
+              {[0, 1, 2].map((dot) => (
+                <div
+                  key={dot}
+                  className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce"
+                  style={{ animationDelay: `${dot * 0.2}s` }}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-4xl">
+            {[1, 2, 3, 4, 5, 6].map((card) => (
+              <div
+                key={card}
+                className="relative bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-6 animate-pulse hover:bg-white/10 transition-all duration-500 group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+
+                <div className="relative z-10">
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-r from-gray-700 to-gray-600 rounded-2xl animate-pulse group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-500"></div>
+                    <div className="flex-1 space-y-2">
+                      <div className="h-4 bg-gradient-to-r from-gray-700 to-gray-600 rounded-full animate-pulse group-hover:from-cyan-600 group-hover:to-blue-600 transition-all duration-500"></div>
+                      <div className="h-3 bg-gradient-to-r from-gray-700 to-gray-600 rounded-full w-2/3 animate-pulse group-hover:from-green-600 group-hover:to-emerald-600 transition-all duration-500"></div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between items-center mt-4">
+                    <div className="flex space-x-2">
+                      <div className="w-8 h-3 bg-gradient-to-r from-gray-700 to-gray-600 rounded-full animate-pulse"></div>
+                      <div className="w-6 h-3 bg-gradient-to-r from-gray-700 to-gray-600 rounded-full animate-pulse"></div>
+                    </div>
+                    <div className="w-20 h-8 bg-gradient-to-r from-gray-700 to-gray-600 rounded-xl animate-pulse group-hover:from-purple-500 group-hover:to-pink-500 transition-all duration-500"></div>
+                  </div>
+                </div>
+
+                <div className="absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-r from-purple-500 via-cyan-500 to-pink-500 bg-clip-border animate-gradient-x opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
+                  <div className="absolute inset-1 rounded-3xl bg-gray-900"></div>
                 </div>
               </div>
+            ))}
+          </div>
+
+          <div className="mt-12 w-full max-w-md mx-auto">
+            <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
+              <div className="flex justify-between text-white/60 text-sm mb-2">
+                <span>Syncing data</span>
+                <span className="animate-pulse">•••</span>
+              </div>
+              <div className="w-full bg-white/10 rounded-full h-2">
+                <div className="bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 h-2 rounded-full animate-progress-grow shadow-lg shadow-cyan-500/25"></div>
+              </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     );
   }
-
   if (error) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex flex-col items-center justify-center p-6">
@@ -169,42 +232,116 @@ const Requests = () => {
 
   if (!requests || requests.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex flex-col items-center justify-center p-6">
-        <div className="text-center max-w-md mx-auto">
-          <div className="mb-7">
-            <div className="w-28 h-28 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full flex items-center justify-center mx-auto shadow-inner">
-              <svg
-                className="w-14 h-14 text-indigo-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                ></path>
-              </svg>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-32 w-80 h-80 bg-gradient-to-r from-indigo-200 to-purple-300 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+          <div className="absolute -bottom-40 -left-32 w-80 h-80 bg-gradient-to-r from-blue-200 to-indigo-300 rounded-full blur-3xl opacity-30 animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-purple-200 to-pink-300 rounded-full blur-3xl opacity-20 animate-pulse delay-500"></div>
+        </div>
+
+        <div className="absolute top-20 left-10 w-8 h-8 bg-indigo-300 rounded-lg rotate-45 opacity-60 animate-float">
+          <div className="absolute inset-1 bg-white/30 rounded"></div>
+        </div>
+        <div className="absolute bottom-32 right-16 w-6 h-6 bg-purple-400 rounded-full opacity-50 animate-float delay-700">
+          <div className="absolute inset-1 bg-white/30 rounded-full"></div>
+        </div>
+        <div className="absolute top-40 right-20 w-10 h-10 bg-blue-300 rotate-12 opacity-40 animate-float delay-1200">
+          <div className="absolute inset-1 bg-white/30"></div>
+        </div>
+
+        <div className="text-center max-w-2xl mx-auto relative z-10">
+          <div className="mb-10 relative">
+            <div className="relative w-48 h-48 mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-400/20 to-purple-500/20 rounded-full blur-xl animate-pulse"></div>
+
+              <div className="absolute inset-4 bg-gradient-to-br from-white to-blue-50 rounded-full shadow-2xl border border-white/50 backdrop-blur-sm flex items-center justify-center">
+                <div className="relative w-32 h-32">
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg border border-white/20">
+                    <svg
+                      className="w-6 h-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
+                      ></path>
+                    </svg>
+                  </div>
+
+                  {[0, 1, 2, 3, 4].map((i) => (
+                    <div
+                      key={i}
+                      className="absolute w-8 h-8 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full flex items-center justify-center shadow-lg border border-white/20 animate-orbit"
+                      style={{
+                        animationDelay: `${i * 0.8}s`,
+                        top: `${Math.sin((i * 2 * Math.PI) / 5) * 40 + 50}%`,
+                        left: `${Math.cos((i * 2 * Math.PI) / 5) * 40 + 50}%`,
+                      }}
+                    >
+                      <div className="w-2 h-2 bg-white rounded-full opacity-80"></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="absolute inset-0">
+                {[...Array(8)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-2 h-2 bg-indigo-300 rounded-full animate-float"
+                    style={{
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
+                      animationDelay: `${i * 0.5}s`,
+                      opacity: 0.6,
+                    }}
+                  ></div>
+                ))}
+              </div>
             </div>
           </div>
-          <h2 className="text-3xl font-bold text-gray-800 mb-3">
-            No Connection Requests
-          </h2>
-          <p className="text-gray-600 mb-3 text-lg">
-            You don't have any pending connection requests at the moment.
-          </p>
-          <p className="text-gray-500">
-            When someone sends you a request, it will appear here.
-          </p>
 
-          <div className="mt-10 flex justify-center space-x-4">
-            {[0.1, 0.2, 0.3, 0.4, 0.5].map((delay) => (
-              <div
-                key={delay}
-                className="w-3 h-3 bg-gradient-to-r from-indigo-300 to-purple-300 rounded-full animate-bounce"
-                style={{ animationDelay: `${delay}s` }}
-              ></div>
+          <div className="mb-8 space-y-4">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4">
+              No Connection Requests
+            </h2>
+            <div className="space-y-3">
+              <p className="text-xl text-gray-700 font-medium leading-relaxed">
+                Your network is waiting to grow
+              </p>
+              <p className="text-gray-600 text-lg leading-relaxed max-w-md mx-auto">
+                When someone sends you a connection request, it will appear
+                here. Start building your network by reaching out to others!
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <button className="group relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
+              <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              <span className="relative">Explore Network</span>
+            </button>
+            <button className="px-6 py-3 border-2 border-indigo-200 text-indigo-600 rounded-xl font-semibold hover:bg-indigo-50 transition-all duration-300">
+              Invite Connections
+            </button>
+          </div>
+
+          <div className="flex justify-center space-x-3">
+            {[0, 1, 2, 3, 4].map((delay) => (
+              <div key={delay} className="relative w-4 h-4">
+                <div
+                  className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full animate-ping opacity-60"
+                  style={{ animationDelay: `${delay * 0.2}s` }}
+                ></div>
+                <div
+                  className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full animate-bounce"
+                  style={{ animationDelay: `${delay * 0.2}s` }}
+                ></div>
+              </div>
             ))}
           </div>
         </div>
@@ -290,9 +427,9 @@ const Requests = () => {
                     </h3>
 
                     {(age || gender) && (
-                      <p className="text-gray-600 mb-4 text-sm flex items-center justify-center">
+                      <p className="text-green-600 mb-4 text-sm flex items-center justify-center">
                         <svg
-                          className="w-4 h-4 mr-1 text-indigo-500"
+                          className="w-4 h-4 mr-1 text-indigo-950"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -310,7 +447,7 @@ const Requests = () => {
 
                     {about && (
                       <div className="mb-5 w-full px-2">
-                        <p className="text-gray-700 text-sm leading-relaxed max-w-xs line-clamp-3 italic">
+                        <p className="text-gray-800 text-sm leading-relaxed max-w-xs line-clamp-3 italic">
                           "{about}"
                         </p>
                       </div>
@@ -318,7 +455,7 @@ const Requests = () => {
 
                     {skills && skills.length > 0 && (
                       <div className="mb-6 w-full">
-                        <h4 className="text-xs font-semibold text-indigo-600 mb-3 uppercase tracking-wider flex items-center justify-center">
+                        <h4 className="text-xs font-semibold text-orange-600 mb-3 uppercase tracking-wider flex items-center justify-center">
                           <svg
                             className="w-4 h-4 mr-2 text-indigo-500"
                             fill="none"
@@ -338,7 +475,7 @@ const Requests = () => {
                           {skills.slice(0, 4).map((skill, index) => (
                             <span
                               key={index}
-                              className="px-3 py-1.5 bg-gradient-to-r from-indigo-50 to-purple-50 text-indigo-700 text-xs font-medium rounded-full shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md border border-indigo-100"
+                              className="px-3 py-1.5 bg-gradient-to-r from-indigo-50 to-purple-50 text-cyan-500 text-xs font-medium rounded-full shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md border border-indigo-100"
                             >
                               {skill}
                             </span>
