@@ -104,7 +104,6 @@ const NavBar = () => {
                   htmlFor="my-drawer"
                   aria-label="close sidebar"
                   className="drawer-overlay"
-                  onClick={() => setIsDrawerOpen(false)}
                 ></label>
                 <div className="menu bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-base-content min-h-full w-80 p-6 shadow-2xl border-r border-white/10 relative overflow-hidden">
                   <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
