@@ -398,7 +398,6 @@ Give it a ⭐ to show your support and help it reach more developers!
 
 Rajesh - [LinkedIn](https://www.linkedin.com/in/rajesh-elluru-97ba6b356/) - rajeshelluru143@gmail.com
 
-Project Link: [https://github.com/your-username/devtinder-backend](https://github.com/your-username/Devtinder-Backend)
 
 
 <p align="right"><a href="#readme-top">back to top ▲</a></p>
